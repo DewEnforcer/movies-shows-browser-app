@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { Redirect, Route, Switch } from 'react-router';
+
+import LandingPage from './components/LandingPage';
+import MovieDisplay from './components/MovieDisplay';
+import MoviePlayer from './components/MoviePlayer';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className="content">
+          <Switch>
+            <Route path="/movie" component={MovieDisplay}/>
+            <Route path="/play/:id" component={MoviePlayer}/>
+            <Route path="/" component={LandingPage}/>
+            <Redirect from="/home" to="/"/>
+          </Switch>
+        </div>
     </div>
   );
 }
