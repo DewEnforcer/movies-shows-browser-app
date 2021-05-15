@@ -102,4 +102,12 @@
   height: 100vh;
   overflow-y: hidden;
   overflow-x: hidden;
+  position: relative;
+}
+.video_player_navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
 }

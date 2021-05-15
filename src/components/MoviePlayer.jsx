@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ShakaPlayer from 'shaka-player-react';
 import 'shaka-player/dist/controls.css';
 
-export default class MoviePlayer extends Component {
-    render() {
-        return (
-            <div className="video_container">
-                <ShakaPlayer style={{height: "100vh"}} autoPlay src={'https://multiplatform-f.akamaihd.net/i/multi/will/bunny/big_buck_bunny_,640x360_400,640x360_700,640x360_1000,950x540_1500,.f4v.csmil/master.m3u8'}/>
-            </div>
-        )
-    }
+export default function MoviePlayer() {
+
+    return (
+        <div className="video_container">
+            <ShakaPlayer autoPlay src={'https://storage.googleapis.com/shaka-demo-assets/bbb-dark-truths-hls/hls.m3u8'} style={{width: "100vw", height: "100vh", backgroundColor: "#000"}} />
+        </div>
+    )
 }
