@@ -6,7 +6,7 @@ export default class MoviePlayer extends Component {
     render() {
         return (
             <div className="video_container">
-                <ShakaPlayer style={{height: "100vh"}} autoPlay src="https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"/>
+                <ShakaPlayer style={{height: "100vh"}} autoPlay src={'http://demo.unified-streaming.com/video/tears-of-steel/tears-of-steel.ism/.m3u8'}/>
             </div>
         )
     }
