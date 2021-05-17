@@ -1,12 +1,89 @@
-import React from 'react'
-import ShakaPlayer from 'shaka-player-react';
-import 'shaka-player/dist/controls.css';
+import React, {useEffect, useRef, useState } from 'react';
+import shaka from 'shaka-player';
 
-export default function MoviePlayer() {
+export default function MoviePlayer({history}) { //wireframe 3
 
-    return (
-        <div className="video_container">
-            <ShakaPlayer autoPlay src={'https://storage.googleapis.com/shaka-demo-assets/bbb-dark-truths-hls/hls.m3u8'} style={{width: "100vw", height: "100vh", backgroundColor: "#000"}} />
-        </div>
-    )
+	const videoRef = useRef();
+	const headingRef = useRef();
+
+	const [isPlaying, setIsPlaying] = useState(false);
+
+	let fadeOutInterval;
+
+	useEffect(() => {
+		const streamURL = "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8";
+		const fallbackStreamURL = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+		const videoEl = videoRef.current;
+		const videoPlayer = new shaka.Player(videoEl);
+
+		
+		videoPlayer.addEventListener("error", onErrorEvent)
+
+		//user can control the video play state by just pressing spacebar, therefore the heading funcs wouldnt get triggered due to no mouse movement, trigger them manually here
+		videoEl.addEventListener("playing", () => {
+			setIsPlaying(true);
+			fadeOutHeading();
+		});
+		videoEl.addEventListener("pause", () => {
+			setIsPlaying(false);
+			popInHeading();
+		});
+		
+		loadVideo(videoPlayer, streamURL, fallbackStreamURL)
+	}, []);
+
+	const loadVideo = async (videoPlayer, streamUrl, fallbackUrl = null) => {
+		try {
+			await videoPlayer.load(streamUrl);
+		} catch (error) { //for some reason the url provided doesnt work due to cors, therefore to prevent user dissatisfaction, fallback to mp4 source (if there is any)
+			onError(error)
+			if (fallbackUrl) return loadVideo(videoPlayer, fallbackUrl);
+		}
+	}
+
+	//error handlers
+	const onErrorEvent = event => {
+		onError(event.detail);
+	  }
+  
+	const onError = error => {
+		console.error('Error code', error.code, 'object', error);
+	}
+	//heading controls
+	const headingFadeHandler = () => {
+		clearInterval(fadeOutInterval);
+
+		popInHeading();
+		if (!isPlaying) return;
+		fadeOutHeading();
+	}
+
+	const popInHeading = () => {//controls pop in instantly, do the same with heading
+		const headingEl = headingRef.current;
+		if (!headingEl) return;
+		headingEl.style.opacity = 1;
+	}
+	const fadeOutHeading = () => { //controls fade out after some time, do the same with heading
+		const headingEl = headingRef.current;
+		if (!headingEl) return;
+		fadeOutInterval = setTimeout(() => {
+			headingEl.style.opacity = 0;
+		}, 2500)
+	}
+	//nav controls
+	const handleExitVideo = () => history.goBack();
+
+	return (
+		<div className="video_container" onMouseMove={headingFadeHandler}>
+			<div ref={headingRef} className="video_player_heading">
+				<h2>{history.location.state.title}</h2>
+				<button type="button" className="btn_exit_video" onClick={handleExitVideo}>X</button>
+			</div>
+			<video 
+				ref={videoRef}
+				className="video_player"
+				controls
+			/>
+		</div>
+	)
 }
