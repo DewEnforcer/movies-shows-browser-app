@@ -12,7 +12,7 @@ export default function SearchPage() { //wireframe 4
         console.log(resData);
         setSubmitting(false);
         if (status !== 200) return console.log("Error");
-        setQueryResults(resData.results.splice(0,8));
+        setQueryResults(resData.results);
         resetForm()
     }
 

@@ -6,7 +6,7 @@ export default function MovieList({title, data, titleWithoutResults = true}) {
         <div className="movie_list_box">
             {title && (titleWithoutResults || data.length > 0) && <h2>{title}</h2>}
             <div className="movie_list_content">
-                {data.map(m => <MovieDisplay key={m.id} data={m} imgSrc={m.poster_path}/>) /* add img src */}
+                {data.splice(0,8).map(m => <MovieDisplay key={m.id} data={m} imgSrc={m.poster_path}/>) /* add img src */}
             </div>
         </div>
     )

@@ -21,10 +21,10 @@ export default class LandingPage extends Component { //wireframe 1
 
 
         const newState = {...this.state, 
-            popularMovies: dataPopMovies.results.splice(0,8), 
-            popularSeries: dataPopSeries.results.splice(0,8),
-            family: dataFamilyMov.results.splice(0,8),
-            documentary: dataDocumentaryMov.results.splice(0,8)
+            popularMovies: dataPopMovies.results, 
+            popularSeries: dataPopSeries.results,
+            family: dataFamilyMov.results,
+            documentary: dataDocumentaryMov.results
         };
         this.setState(newState);
     }
