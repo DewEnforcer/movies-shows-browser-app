@@ -5,7 +5,7 @@ import config from "../config/default"
 import { getMovieByGenreId, getPopularMovies } from '../services/movieService';
 import { getPopularSeries } from '../services/seriesService';
 
-export default class LandingPage extends Component {
+export default class LandingPage extends Component { //wireframe 1
     state = {
         popularMovies: [],
         popularSeries: [],

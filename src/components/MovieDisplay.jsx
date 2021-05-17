@@ -1,10 +1,10 @@
 import React from 'react'
 import { useHistory } from 'react-router'
 
-export default function MovieDisplay() {
-    const {location, push} = useHistory();
+export default function MovieDisplay() { //wireframe 2
+    const {location, push, goBack} = useHistory();
 
-    if (!location.state) {
+    if (!location.state) { //prevent users from entering this section with no movie/series select
         push("/");
         return null;
     }
@@ -12,12 +12,15 @@ export default function MovieDisplay() {
     const {title, overview, poster_path, vote_average, vote_count, release_date, id} = location.state;
 
     const navigateToPlayer = () => {
-        push(`/play/${id}`);
+        push(`/play/${id}`, {title});
     }
+
+    const navigateBack = () => goBack();
 
 
     return (
         <div className="movie_detail_box">
+            <button type="button" className="btn_exit_details" onClick={navigateBack}>Go back</button>
             <div className="movie_detail_text">
                 <h1>{title}</h1>
                 <p>{overview}</p>
