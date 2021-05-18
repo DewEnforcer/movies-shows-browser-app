@@ -5,10 +5,12 @@ axios.defaults.baseURL = config.API_BASE_URL;
 
 export const addApiKey = url => `${url}?api_key=${config.api_key}`;
 
-export default {
+const http = {
     get: axios.get,
     post: axios.post,
     patch: axios.patch,
     put: axios.put,
     delete: axios.delete
 }
+
+export default http;

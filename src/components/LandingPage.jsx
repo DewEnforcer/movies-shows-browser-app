@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import MovieList from './movies/MovieList';
+import { toast } from 'react-toastify';
 
-import config from "../config/default"
 import { getMovieByGenreId, getPopularMovies } from '../services/movieService';
 import { getPopularSeries } from '../services/seriesService';
+
+import config from "../config/default"
+import errTexts from "../texts/errorTexts";
 
 export default class LandingPage extends Component { //wireframe 1
     state = {
@@ -13,20 +16,28 @@ export default class LandingPage extends Component { //wireframe 1
         documentary: []
     }
 
-    async componentDidMount() {
-        const {data: dataPopMovies} = await getPopularMovies();
-        const {data: dataPopSeries} = await getPopularSeries();
-        const {data: dataFamilyMov} = await getMovieByGenreId(10751);
-        const {data: dataDocumentaryMov} = await getMovieByGenreId(99);
+    fetchData() {
+        const popMovies = getPopularMovies();
+        const popSeries = getPopularSeries();
+        const familyMov = getMovieByGenreId(10751);
+        const documentaryMov = getMovieByGenreId(99);
+        //call all functions at first, wait for them to be all resolved, then set the state with the retrieved values
+        Promise.all([popMovies, popSeries, familyMov, documentaryMov]).then(values => { 
+            const newState = {...this.state, 
+                popularMovies: values[0].data.results,
+                popularSeries: values[1].data.results,
+                family: values[2].data.results,
+                documentary: values[3].data.results
+            };
+            this.setState(newState);
+        }).catch(err => {
+            console.error(err);
+            toast.error(errTexts.LANDING_PAGE_FETCH_ERR);
+        })
+    }
 
-
-        const newState = {...this.state, 
-            popularMovies: dataPopMovies.results, 
-            popularSeries: dataPopSeries.results,
-            family: dataFamilyMov.results,
-            documentary: dataDocumentaryMov.results
-        };
-        this.setState(newState);
+    componentDidMount() {
+        this.fetchData();
     }
 
     render() {

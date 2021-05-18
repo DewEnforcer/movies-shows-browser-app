@@ -9,9 +9,10 @@ export default function SearchPage() { //wireframe 4
     const handleSubmitQuery = async (data, {resetForm, setSubmitting}) => {
         setSubmitting(true);
         const {data: resData, status} = await queryMovies(data.query);
-        console.log(resData);
         setSubmitting(false);
+        
         if (status !== 200) return console.log("Error");
+        
         setQueryResults(resData.results);
         resetForm()
     }
@@ -20,7 +21,7 @@ export default function SearchPage() { //wireframe 4
         <div className="search_box">
             <h1>Search</h1>
             <Formik initialValues={{query: ""}} onSubmit={handleSubmitQuery}>
-                {({values, isSubmitting}) => (
+                {({isSubmitting}) => (
                     <div className="search_bar_wrapper">
                         <Form>
                             <Field name="query" className="search_bar_input" type="input" placeholder="Enter name of a Movie/TV show you are looking for..."/>

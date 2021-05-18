@@ -1,5 +1,8 @@
 import React, {useEffect, useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 import shaka from 'shaka-player';
+
+import errTexts from "../texts/errorTexts";
 
 export default function MoviePlayer({history}) { //wireframe 3
 
@@ -30,7 +33,11 @@ export default function MoviePlayer({history}) { //wireframe 3
 		});
 		
 		loadVideo(videoPlayer, streamURL, fallbackStreamURL)
-	}, []);
+		return () => { //prevent memory leaks
+			videoEl.removeEventListener("playing");
+			videoEl.removeEventListener("pause");
+		}
+	});
 
 	const loadVideo = async (videoPlayer, streamUrl, fallbackUrl = null) => {
 		try {
@@ -47,7 +54,8 @@ export default function MoviePlayer({history}) { //wireframe 3
 	  }
   
 	const onError = error => {
-		console.error('Error code', error.code, 'object', error);
+		console.error(error);
+		toast.error(errTexts.VIDEO_PLAYER_SOURCE_LOADING_ERR);
 	}
 	//heading controls
 	const headingFadeHandler = () => {
