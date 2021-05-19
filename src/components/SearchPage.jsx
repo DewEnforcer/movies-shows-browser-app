@@ -1,7 +1,11 @@
 import { Form, Formik, Field } from 'formik';
 import React, { useState } from 'react'
+import { toast } from 'react-toastify';
+
 import { queryMovies } from '../services/movieService';
 import MovieList from './movies/MovieList';
+
+import errTexts from "../texts/errorTexts";
 
 export default function SearchPage() { //wireframe 4
     const [queryResults, setQueryResults] = useState([]);
@@ -11,7 +15,11 @@ export default function SearchPage() { //wireframe 4
         const {data: resData, status} = await queryMovies(data.query);
         setSubmitting(false);
         
-        if (status !== 200) return console.log("Error");
+        if (status !== 200) {
+            console.error("Failed to fetch query results", status, data);
+            toast.error(errTexts.SEARCH_RESULT_FETCH_ERROR);
+            return;
+        }
         
         setQueryResults(resData.results);
         resetForm()
