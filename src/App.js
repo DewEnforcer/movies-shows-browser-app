@@ -1,7 +1,7 @@
 import { Redirect, Route, Switch } from 'react-router';
 
 import LandingPage from './components/LandingPage';
-import MovieDisplay from './components/MovieDisplay';
+import MovieDetails from './components/MovieDetails';
 import MoviePlayer from './components/MoviePlayer';
 import SearchPage from './components/SearchPage';
 import Header from './components/header/Header';
@@ -22,7 +22,7 @@ function App() {
         <div className="content">
           <ToastContainer/>
           <Switch>
-            <Route path="/movie" component={MovieDisplay}/>
+            <Route path="/movie" component={MovieDetails}/>
             <Route path="/play/:id" component={MoviePlayer}/>
             <Route path="/search" component={SearchPage}/>
             <Route path="/" component={LandingPage}/>

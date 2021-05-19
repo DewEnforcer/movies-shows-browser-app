@@ -4,6 +4,9 @@ import shaka from 'shaka-player';
 
 import errTexts from "../texts/errorTexts";
 
+const STREAM_URL = "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8";
+const FALLBACK_STREAM_URL = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+
 export default function MoviePlayer({history}) { //wireframe 3
 
 	const videoRef = useRef();
@@ -13,9 +16,7 @@ export default function MoviePlayer({history}) { //wireframe 3
 
 	let fadeOutInterval;
 
-	useEffect(() => {
-		const streamURL = "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8";
-		const fallbackStreamURL = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+	const handleFetchVideoStream = () => {
 		const videoEl = videoRef.current;
 		const videoPlayer = new shaka.Player(videoEl);
 
@@ -32,12 +33,13 @@ export default function MoviePlayer({history}) { //wireframe 3
 			popInHeading();
 		});
 		
-		loadVideo(videoPlayer, streamURL, fallbackStreamURL)
-		return () => { //prevent memory leaks
-			videoEl.removeEventListener("playing");
-			videoEl.removeEventListener("pause");
-		}
-	});
+		loadVideo(videoPlayer, STREAM_URL, FALLBACK_STREAM_URL)
+	}
+
+	useEffect(() => {
+		handleFetchVideoStream();
+		//eslint-disable-next-line
+	}, []);
 
 	const loadVideo = async (videoPlayer, streamUrl, fallbackUrl = null) => {
 		try {

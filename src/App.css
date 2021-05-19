@@ -95,6 +95,8 @@
   position: absolute;
   top: 1vh;
   left: 1vw;
+  padding: 0.2rem;
+  box-sizing: border-box;
 }
 
 .movie_detail_text {
@@ -201,4 +203,22 @@
 }
 .search_bar_wrapper button {
   width: 10%;
+}
+
+@media only screen and (max-width: 600px) {
+  /* movie/series details page*/
+  .movie_detail_box {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  .movie_detail_img {
+    width: 80%;
+    height: 80%;
+  }
+  .movie_detail_text {
+    margin: 2vh 0;
+  }
+  .btn_watch_movie {
+    width: 25vw;
+  }
 }

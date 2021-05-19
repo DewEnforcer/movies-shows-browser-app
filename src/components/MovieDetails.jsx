@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router'
 
-export default function MovieDisplay() { //wireframe 2
+export default function MovieDetails() { //wireframe 2
     const {location, push, goBack} = useHistory();
 
     if (!location.state) { //prevent users from entering this section with no movie/series select
