@@ -15,7 +15,7 @@ export default function SearchPage() { //wireframe 4
         const {data: resData, status} = await queryMovies(data.query);
         setSubmitting(false);
         
-        if (status !== 200) {
+        if (status !== 200) { // without the return, the form would get reset although the user got no results resulting in poor user experience
             console.error("Failed to fetch query results", status, data);
             toast.error(errTexts.SEARCH_RESULT_FETCH_ERROR);
             return;
