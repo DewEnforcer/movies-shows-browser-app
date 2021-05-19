@@ -8,6 +8,9 @@ import { getPopularSeries } from '../services/seriesService';
 import config from "../config/default"
 import errTexts from "../texts/errorTexts";
 
+const FAMILY_MOVIE_GENRE_ID = 10751;
+const DOCUMENTARY_MOVIE_GENRE_ID = 99;
+
 export default class LandingPage extends Component { //wireframe 1
     state = {
         popularMovies: [],
@@ -19,8 +22,8 @@ export default class LandingPage extends Component { //wireframe 1
     fetchData() {
         const popMovies = getPopularMovies();
         const popSeries = getPopularSeries();
-        const familyMov = getMovieByGenreId(10751);
-        const documentaryMov = getMovieByGenreId(99);
+        const familyMov = getMovieByGenreId(FAMILY_MOVIE_GENRE_ID);
+        const documentaryMov = getMovieByGenreId(DOCUMENTARY_MOVIE_GENRE_ID);
         //call all functions at first, wait for them to be all resolved, then set the state with the retrieved values
         Promise.all([popMovies, popSeries, familyMov, documentaryMov]).then(values => { 
             const newState = {...this.state, 
