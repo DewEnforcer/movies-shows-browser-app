@@ -16,7 +16,7 @@ Web application made primarily using React.js. Users can browse, watch and/or ex
 * axios
 * formik
 * react-router-dom
-* react toastify
+* react-toastify
 * shaka-player
 ### Installation and setup
 * Clone the project
@@ -37,18 +37,18 @@ This section talks about values that change behavior of certain components.
 ### App.js
 * navItems - An array of navigation item objects, each object requires id, path (route name) and label.
 ```
-const navItems = [
-    {id: int, path: string, label: string}
+const navItems: {id: number, path: string, label: string, className?: string} = [
+    {id: 1, path: "/", label: "Home", className="home_nav_btn"}
 ]
 ```
 ### MovieList.jsx
 * MAX_LIST_RESULTS - Amount of items displayed by the list on one page, it is recommended to use value of 8.
 ```
-const MAX_LIST_RESULTS = int;
+const MAX_LIST_RESULTS: number = 8;
 ```
 * START_PAGE - The value on which the list starts displaying items (Page 1 will get you results 0-8). Highly recommended to leave the value at 1.
 ```
-const START_PAGE = int;
+const START_PAGE: number = 1;
 ```
 * titleWithoutResults - Prop passed by a parent component, decides whether the title (if any is given) will be displayed even if no items are present in the data array. Will display title if set to true.
 ```
@@ -57,11 +57,11 @@ const START_PAGE = int;
 ### MoviePlayer.jsx
 * STREAM_URL - URL value of a primary video stream, will be loaded first.
 ```
-const STREAM_URL = string;
+const STREAM_URL: string = "http://mystream.my/mystream.hls";
 ```
 * FALLBACK_STREAM_URL - URl value of a secondary/backup video stream, will be loaded on primary video stream loading failure.
 ```
-const FALLBACK_STREAM_URL = string;
+const FALLBACK_STREAM_URL: string = "http://mystream.my/backup/mystream.mp4;
 ```
 ## Common errors and issues
 This section talks about common errors/issues in certain components
