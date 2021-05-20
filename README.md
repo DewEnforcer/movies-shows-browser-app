@@ -46,6 +46,10 @@ const navItems = [
 ```
 const MAX_LIST_RESULTS = int;
 ```
+* START_PAGE - The value on which the list starts displaying items (Page 1 will get you results 0-8). Highly recommended to leave the value at 1.
+```
+const START_PAGE = int;
+```
 * titleWithoutResults - Prop passed by a parent component, decides whether the title (if any is given) will be displayed even if no items are present in the data array. Will display title if set to true.
 ```
 <MovieList titleWithoutResults={boolean}>
