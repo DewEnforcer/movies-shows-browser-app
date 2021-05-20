@@ -89,7 +89,32 @@ input {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  width: 90%;
+  width: 100%;
+  padding: 0 5%;
+  box-sizing: border-box;
+  position: relative;
+}
+.movie_list_btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  font-size: 1.3rem;
+  border: 2px solid white;
+}
+.movie_list_btn:disabled {
+  border-color: grey;
+  cursor: default;
+  color: grey;
+}
+.movie_list_goback {
+  left: 1vw
+}
+.movie_list_goforward {
+  right: 1vw
 }
 .movie_list_box h2 {
   padding: 0.2em 0;
@@ -250,6 +275,10 @@ input {
 }
 
 @media only screen and (max-width: 600px) {
+  /* MovieList */
+  .movie_list_btn {
+    background-color: rgb(35,35,35);
+  }
   /* movie/series details page*/
   .movie_detail_box {
     display: flex;
@@ -258,6 +287,7 @@ input {
   .movie_detail_img {
     width: 80%;
     height: 80%;
+    background-size: contain;
   }
   .movie_detail_text {
     margin: 2vh 0;
