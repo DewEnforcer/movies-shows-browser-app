@@ -7,6 +7,7 @@ import { getPopularSeries } from '../services/seriesService';
 
 import config from "../config/default"
 import errTexts from "../texts/errorTexts";
+import Loader from './Loader';
 
 const FAMILY_MOVIE_GENRE_ID = 10751;
 const DOCUMENTARY_MOVIE_GENRE_ID = 99;
@@ -16,10 +17,14 @@ export default class LandingPage extends Component { //wireframe 1
         popularMovies: [],
         popularSeries: [],
         family: [],
-        documentary: []
+        documentary: [],
+        isLoading: false
     }
 
     fetchData() {
+        const newState = {...this.state, isLoading: true};
+        this.setState(newState);
+
         const popMovies = getPopularMovies();
         const popSeries = getPopularSeries();
         const familyMov = getMovieByGenreId(FAMILY_MOVIE_GENRE_ID);
@@ -30,7 +35,8 @@ export default class LandingPage extends Component { //wireframe 1
                 popularMovies: values[0].data.results,
                 popularSeries: values[1].data.results,
                 family: values[2].data.results,
-                documentary: values[3].data.results
+                documentary: values[3].data.results,
+                isLoading: false
             };
             this.setState(newState);
         }).catch(err => {
@@ -44,11 +50,12 @@ export default class LandingPage extends Component { //wireframe 1
     }
 
     render() {
-        const {popularMovies, popularSeries, family, documentary} = this.state;
+        const {popularMovies, popularSeries, family, documentary, isLoading} = this.state;
 
         return (
             <div className="landing_page_box">
                 <h1>{config.app_name}</h1>
+                {isLoading && <Loader/>}
                 <MovieList title="Popular movies" data={popularMovies}/>
                 <MovieList title="Popular series" data={popularSeries}/>
                 <MovieList title="Family" data={family}/>

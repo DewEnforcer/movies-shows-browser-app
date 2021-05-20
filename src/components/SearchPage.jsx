@@ -6,15 +6,21 @@ import { queryMovies } from '../services/movieService';
 import MovieList from './movies/MovieList';
 
 import errTexts from "../texts/errorTexts";
+import Loader from './Loader';
 
 export default function SearchPage() { //wireframe 4
     const [queryResults, setQueryResults] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmitQuery = async (data, {resetForm, setSubmitting}) => {
         setSubmitting(true);
+        setIsLoading(true);
+
         const {data: resData, status} = await queryMovies(data.query);
-        setSubmitting(false);
         
+        setSubmitting(false);
+        setIsLoading(false);
+
         if (status !== 200) { // without the return, the form would get reset although the user got no results resulting in poor user experience
             console.error("Failed to fetch query results", status, data);
             toast.error(errTexts.SEARCH_RESULT_FETCH_ERROR);
@@ -38,6 +44,7 @@ export default function SearchPage() { //wireframe 4
                     </div>
                 )}
             </Formik>
+            {isLoading && <Loader/>}
             <MovieList titleWithoutResults={false} title="Search results" data={queryResults}/>
         </div>
     )

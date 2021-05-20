@@ -2,25 +2,45 @@
   padding: 0;
   margin: 0;
 }
-
+button {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid white;
+  cursor: pointer;
+  background-color: transparent;
+}
+input {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .App {
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #000;
+  color: white;
 }
 .content {
   width: 100%;
-  height: calc(100% - 60px);
+  min-height: calc(100vh - 61px);
   display: flex;
   justify-content: center;
+}
+.loader_text {
+  text-align: center !important;
+  align-self: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: white !important;
 }
 
 /* Header */
 .header {
   min-height: 60px;
-  background-color: #6c757d;
+  background-color: #000;
   display: flex;
   align-items: center;
   padding: 0 2vw;
+  border-bottom: 1px solid white;
 }
 .header ul {
   display: flex;
@@ -39,6 +59,13 @@
   font-size: 18px;
   color: #fff;
   text-decoration: none;
+  border: 1px solid white;
+  padding: 0.3rem;
+}
+.header_search_btn {
+  background-color: #e50914;
+  border-color:  transparent;
+  border-radius: 3px;
 }
 .nav-link .active {
   text-decoration: underline;
@@ -55,6 +82,7 @@
   align-self: flex-start;
   margin: 5vh 0;
   margin-left: 5vw;
+  color: #e50914;
 }
 
 .movie_list_box {
@@ -97,6 +125,7 @@
   left: 1vw;
   padding: 0.2rem;
   box-sizing: border-box;
+  background-color: transparent;
 }
 
 .movie_detail_text {
@@ -135,6 +164,10 @@
   font-size: 1.2rem;
   cursor: pointer;
   margin: .3rem 0;
+  background-color: #e50914;
+  border: transparent;
+  color: white;
+  border-radius: 3px;
 }
 /* play movie page */
 .video_container {
@@ -200,9 +233,20 @@
   height: 3vh;
   padding: 0 .2rem;
   box-sizing: border-box;
+  background-color: rgb(50,50,50);
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
 }
 .search_bar_wrapper button {
   width: 10%;
+  background-color: #e50914;
+  border-color: transparent;
+  border-radius: 3px;
+}
+.search_bar_wrapper button:disabled {
+  cursor: default;
+  color: grey;
 }
 
 @media only screen and (max-width: 600px) {

@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify';
 
 const navItems = [
   {id: 1, path: "/", label: "Home"},
-  {id: 2, path: "/search", label: "Search"},
+  {id: 2, path: "/search", label: "Search", className: "header_search_btn"},
 ]
 
 function App() {
