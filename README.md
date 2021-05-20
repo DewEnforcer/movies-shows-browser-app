@@ -42,7 +42,7 @@ const navItems = [
 ]
 ```
 ### MovieList.jsx
-* MAX_LIST_RESULTS - Value of items displayed by the list, it is recommended to use maximal value of 8.
+* MAX_LIST_RESULTS - Amount of items displayed by the list on one page, it is recommended to use value of 8.
 ```
 const MAX_LIST_RESULTS = int;
 ```
