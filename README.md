@@ -1,13 +1,12 @@
 # Movies/TV Shows browser app
-- [Movies/TV Shows browser app](#https://github.com/DewEnforcer/movies-shows-browser-app)
-    - [Dependencies](#dependencies)
-    - [Installation and setup](#installation-and-setup)
-    - [Changing the app behavior](#changing-the-app-behavior)
-        - [App.js](#app.js)
-        - [MovieList.jsx](#movielist.jsx)
-        - [MoviePlayer.jsx](#movieplayer.jsx)
-    - [Common errors and issues](#common-errors-and-issues)
-        - [MoviePlayer.jsx](#movieplayer.jsx-issue)
+- [Dependencies](#dependencies)
+- [Installation and setup](#installation-and-setup)
+- [Changing the app behavior](#changing-the-app-behavior)
+    - [App.js](#app.js)
+    - [MovieList.jsx](#movielist.jsx)
+    - [MoviePlayer.jsx](#movieplayer.jsx)
+- [Common errors and issues](#common-errors-and-issues)
+    - [MoviePlayer.jsx](#movieplayer.jsx-issue)
 ## About
 Web application made primarily using React.js. Users can browse, watch and/or explore different movies or TV shows.
 ## Prerequisites 
