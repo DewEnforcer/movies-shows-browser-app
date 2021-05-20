@@ -37,7 +37,7 @@ This section talks about values that change behavior of certain components.
 ### App.js
 * navItems - An array of navigation item objects, each object requires id, path (route name) and label.
 ```
-const navItems: {id: number, path: string, label: string, className?: string} = [
+const navItems: {id: number, path: string, label: string, className?: string}[] = [
     {id: 1, path: "/", label: "Home", className="home_nav_btn"}
 ]
 ```
