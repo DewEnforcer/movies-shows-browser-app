@@ -275,6 +275,10 @@ input {
 }
 
 @media only screen and (max-width: 600px) {
+  /* MovieList */
+  .movie_list_btn {
+    background-color: rgb(35,35,35);
+  }
   /* movie/series details page*/
   .movie_detail_box {
     display: flex;
@@ -283,6 +287,7 @@ input {
   .movie_detail_img {
     width: 80%;
     height: 80%;
+    background-size: contain;
   }
   .movie_detail_text {
     margin: 2vh 0;
