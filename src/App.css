@@ -55,7 +55,7 @@ input {
 .header ul li:nth-child(2) {
   font-weight: 600;
 }
-.nav-link {
+.nav_link {
   font-size: 18px;
   color: #fff;
   text-decoration: none;
@@ -67,7 +67,7 @@ input {
   border-color:  transparent;
   border-radius: 3px;
 }
-.nav-link .active {
+.nav_link .active {
   text-decoration: underline;
 }
 
