@@ -28,7 +28,7 @@ $ npm i
 ```
 * Start the application
 ```
-npm start
+$ npm start
 ```
 ## Changing the app behavior
 This section talks about values that change behavior of certain components.
