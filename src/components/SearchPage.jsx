@@ -13,6 +13,8 @@ export default function SearchPage() {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmitQuery = async (data, {resetForm, setSubmitting}) => {
+        if (data.query.trim().length === 0) return toast.error(errTexts.SEARCH_QUERY_EMPTY);
+
         setSubmitting(true);
         setIsLoading(true);
 
