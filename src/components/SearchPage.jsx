@@ -8,7 +8,7 @@ import MovieList from './movies/MovieList';
 import errTexts from "../texts/errorTexts";
 import Loader from './Loader';
 
-export default function SearchPage() { //wireframe 4
+export default function SearchPage() {
     const [queryResults, setQueryResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 

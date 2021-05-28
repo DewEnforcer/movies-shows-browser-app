@@ -12,7 +12,7 @@ import Loader from './Loader';
 const FAMILY_MOVIE_GENRE_ID = 10751;
 const DOCUMENTARY_MOVIE_GENRE_ID = 99;
 
-export default class LandingPage extends Component { //wireframe 1
+export default class LandingPage extends Component {
     state = {
         popularMovies: [],
         popularSeries: [],

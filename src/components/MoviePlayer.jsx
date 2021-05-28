@@ -7,7 +7,7 @@ import errTexts from "../texts/errorTexts";
 const STREAM_URL = "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8";
 const FALLBACK_STREAM_URL = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
 
-export default function MoviePlayer({history}) { //wireframe 3
+export default function MoviePlayer({history}) {
 
 	const videoRef = useRef();
 	const headingRef = useRef();
