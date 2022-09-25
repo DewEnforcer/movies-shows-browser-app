@@ -43,8 +43,8 @@ export default function MovieList({title, data, titleWithoutResults = true}) {
             </div>
             {displayUI && (
                 <>
-                <button className="movie_list_btn movie_list_goback" disabled={page === 1} onClick={() => handlePageChange(-1)}>&#60;</button>
-                <button className="movie_list_btn movie_list_goforward" disabled={onLastPage} onClick={() => handlePageChange(1)}>&#62;</button>
+                <button className="movie_list_btn movie_list_goback" disabled={page === 1} onClick={() => handlePageChange(-1)}><i className="fa fa-chevron-left"></i></button>
+                <button className="movie_list_btn movie_list_goforward" disabled={onLastPage} onClick={() => handlePageChange(1)}><i className="fa fa-chevron-right"></i></button>
                 </>
             )}
         </div>

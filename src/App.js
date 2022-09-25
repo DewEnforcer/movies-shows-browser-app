@@ -11,8 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from 'react-toastify';
 
 const navItems = [
-  {id: 1, path: "/", label: "Home"},
-  {id: 2, path: "/search", label: "Search", className: "header_search_btn"},
+  {id: 1, path: "/", label: "Home", icon: "fa-home"},
+  {id: 2, path: "/search", label: "Search", className: "header_search_btn", icon: "fa-search"},
 ]
 
 function App() {
